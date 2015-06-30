@@ -1,6 +1,7 @@
 AutoWah (AudioUnitEffect)
 ===
-工事中。
+勝手にワウワウなってくれるエフェクターで有名なオートワウです。
+音に合わせてLowpass FilterのCutoff Freqancyが移動して気持ちよいワウ音が楽しめます。
 
 ## Demo
 Comming Soon!!
@@ -12,19 +13,19 @@ GarageBand, AU LabなどのAudioUnitsが対応したソフトウェアで読み�
 工事中。
 
 
-+	`Range` :
-バンドパスフィルタの有効範囲
++	`Speed` :
+CutoffFrequancyの移動速度
 
 +	`Resonance` :
 ピークの強度
 
 
 ## Install
-1. cloneしたディレクトリの中のDerivedData/killmachine/Build/Products/Development/にAutoWah.componentがあるか確認。なければXcodeを用いてAutoWah.xcodeprojを開けてBuildして生成してください。
+1. cloneしたディレクトリの中のDerivedData/AutoWah/Build/Products/Development/にAutoWah.componentがあるか確認。なければXcodeを用いてAutoWah.xcodeprojを開けてBuildして生成してください。
 
 2. AutoWah.componentを/Users/$USER/Library/Audio/Plug-Ins/Componentsに移す。
 
-3. Terminal.appで"auval -a"を用いて"aufx KILL MUKS  -  Muks: AutoWah (Effect AU)"がリストに含まれているか確認。
+3. Terminal.appで"auval -a"を用いて"aufx AWAH MUKS  -  Muks: AutoWah (Effect AU)"がリストに含まれているか確認。
 
 4. リストに含まれていたら正しく読み込まれています。AudioUnitsに対応しているソフトウェアでお使いください。
 
