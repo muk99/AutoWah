@@ -14,7 +14,7 @@ GarageBand, AU LabなどのAudioUnitsが対応したソフトウェアで読み�
 
 
 +	`Speed` :
-CutoffFrequancyの移動速度
+Cutoff Frequancyの移動速度
 
 +	`Resonance` :
 ピークの強度
