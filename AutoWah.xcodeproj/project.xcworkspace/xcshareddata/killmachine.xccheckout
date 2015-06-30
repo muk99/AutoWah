@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>77136731-0F63-4B4D-8A3D-BFD2702880EA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>killmachine</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>619DD5EFBB82767B16A13E2B8B1DEC46E8F99CCC</key>
+		<string>https://github.com/muk99/KillMachine.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>killmachine.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>619DD5EFBB82767B16A13E2B8B1DEC46E8F99CCC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/muk99/KillMachine.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>619DD5EFBB82767B16A13E2B8B1DEC46E8F99CCC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>619DD5EFBB82767B16A13E2B8B1DEC46E8F99CCC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KillMachine</string>
+		</dict>
+	</array>
+</dict>
+</plist>
