@@ -10,14 +10,14 @@
 	<string>AutoWah</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3DDCC74E0BCFCBC364E5837249F2756D9173B4BD</key>
+		<key>A5818A0DBAD312331E6384DC5F3DCC4943EB0F09</key>
 		<string>https://bitbucket.org/muk99/autowah.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>AutoWah.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3DDCC74E0BCFCBC364E5837249F2756D9173B4BD</key>
+		<key>A5818A0DBAD312331E6384DC5F3DCC4943EB0F09</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3DDCC74E0BCFCBC364E5837249F2756D9173B4BD</string>
+	<string>A5818A0DBAD312331E6384DC5F3DCC4943EB0F09</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3DDCC74E0BCFCBC364E5837249F2756D9173B4BD</string>
+			<string>A5818A0DBAD312331E6384DC5F3DCC4943EB0F09</string>
 			<key>IDESourceControlWCCName</key>
 			<string>AutoWah</string>
 		</dict>

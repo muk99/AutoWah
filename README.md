@@ -19,6 +19,13 @@ Cutoff Frequancyの移動速度
 +	`Resonance` :
 ピークの強度
 
++	`MinFreq` :
+Cutoff Frequancyの移動範囲の最低値
+
++	`MaxFreq` :
+ピークの強度
+Cutoff Frequancyの移動範囲の最高値
+
 
 ## Install
 1. cloneしたディレクトリの中のDerivedData/AutoWah/Build/Products/Development/にAutoWah.componentがあるか確認。なければXcodeを用いてAutoWah.xcodeprojを開けてBuildして生成してください。
