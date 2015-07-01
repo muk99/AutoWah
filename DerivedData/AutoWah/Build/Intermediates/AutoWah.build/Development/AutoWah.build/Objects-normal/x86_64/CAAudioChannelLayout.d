@@ -1,7 +1,7 @@
 dependencies: \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CAAudioChannelLayout.cpp \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CAAudioChannelLayout.h \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CADebugMacros.h \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CAAutoDisposer.h \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CAReferenceCounted.h \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CAAtomic.h
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CAAudioChannelLayout.cpp \
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CAAudioChannelLayout.h \
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CADebugMacros.h \
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CAAutoDisposer.h \
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CAReferenceCounted.h \
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CAAtomic.h

@@ -1,5 +1,6 @@
 #include "AutoWah.h"
 
+
 #pragma mark ____Construction_Initialization
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -9,8 +10,10 @@
 AutoWah::AutoWah(AudioUnit component)
 : AUEffectBase(component)
 {
-	SetParameter(kAutoWahParam_Speed, kDefaultSpeed);
-	SetParameter(kAutoWahParam_Resonance, kDefaultResonance);
+	SetParameter(kAutoWahParam_Speed,		kDefaultSpeed);
+	SetParameter(kAutoWahParam_Resonance,	kDefaultResonance);
+	SetParameter(kAutoWahParam_Frequancy,	kDefaultFrequancy);
+	SetParameter(kAutoWahParam_Range,		kDefaultRange);
 	
 	SetParamHasSampleRateDependency(false);
 }
@@ -29,7 +32,7 @@ OSStatus AutoWah::GetParameterInfo(	AudioUnitScope			inScope,
 	OSStatus result = noErr;
 	
 	outParameterInfo.flags =
-	kAudioUnitParameterFlag_IsWritable + kAudioUnitParameterFlag_IsReadable;
+		kAudioUnitParameterFlag_IsWritable + kAudioUnitParameterFlag_IsReadable;
 	
 	if (inScope == kAudioUnitScope_Global)
 	{
@@ -51,6 +54,22 @@ OSStatus AutoWah::GetParameterInfo(	AudioUnitScope			inScope,
 				outParameterInfo.maxValue = kMaxResonance;
 				outParameterInfo.defaultValue = kDefaultResonance;
 				outParameterInfo.flags += kAudioUnitParameterFlag_IsHighResolution;
+				break;
+				
+			case kAutoWahParam_Frequancy:
+				AUBase::FillInParameterName (outParameterInfo, kFrequancy_Name, false);
+				outParameterInfo.unit = kAudioUnitParameterUnit_Hertz;
+				outParameterInfo.minValue = kMinFrequancy;
+				outParameterInfo.maxValue = kMaxFrequancy;
+				outParameterInfo.defaultValue = kDefaultFrequancy;
+				break;
+				
+			case kAutoWahParam_Range:
+				AUBase::FillInParameterName (outParameterInfo, kRange_Name, false);
+				outParameterInfo.unit = kAudioUnitParameterUnit_Hertz;
+				outParameterInfo.minValue = kMinRange;
+				outParameterInfo.maxValue = kMaxRange;
+				outParameterInfo.defaultValue = kDefaultRange;
 				break;
 				
 			default:
@@ -228,6 +247,8 @@ void AutoWahKernel::Process( const	Float32		*inSourceP,
 	float srate = GetSampleRate();
 	double resonance = GetParameter(kAutoWahParam_Resonance);
 	double speed = GetParameter(kAutoWahParam_Speed);
+	double freq = GetParameter(kAutoWahParam_Frequancy);
+	double range = GetParameter(kAutoWahParam_Range);
 	
 	
 	
@@ -270,7 +291,7 @@ void AutoWahKernel::Process( const	Float32		*inSourceP,
 	CalculateLopassParams(mLastCutoff, resonance);
 	
 #ifdef DEBUG_PATH
-	debug << "cut: " << cutoff << "     last: " << mLastCutoff << std::endl;
+	debug << "fre: " << cutoff << "     range: " << mLastCutoff << std::endl;
 #endif
 	
 }

@@ -10,7 +10,7 @@
 #include <math.h>
 
 //If you want to debug, please enter the path of the debug between ""
-//#define DEBUG_PATH "/Users/muk/SourceTree/AudioUnits/AutoWah/debug.txt"
+#define DEBUG_PATH "/Users/muk/SourceTree/AudioUnits/AutoWah/debug.txt"
 
 #ifdef DEBUG_PATH
 #include <iostream>
@@ -25,18 +25,18 @@ class AutoWahKernel : public AUKernelBase
 public:
 	AutoWahKernel(AUEffectBase *inAudioUnit);
 	virtual ~AutoWahKernel();
-    
+	
 	virtual void Process(	const Float32   *inSourceP,
 							Float32         *inDestP,
 							UInt32          inFramesToProcess,
 							UInt32          inNumChannels,
 							bool            &ioSilence );
 	
-			void CalculateLopassParams(	double inFreq,
+	void CalculateLopassParams(	double inFreq,
 										double inResonance );
-
+	
 	virtual void Reset();
-    
+	
 private:
 	// filter coefficients
 	double	mA0;
@@ -44,7 +44,7 @@ private:
 	double	mA2;
 	double	mB1;
 	double	mB2;
-    
+	
 	// filter state
 	double	mX1;
 	double	mX2;
@@ -71,7 +71,7 @@ public:
 										AudioUnitElement		inElement,
 										UInt32                  &outDataSize,
 										Boolean                 &outWritable );
-    
+	
 	virtual OSStatus GetProperty(		AudioUnitPropertyID 	inID,
 										AudioUnitScope 			inScope,
 										AudioUnitElement 		inElement,
@@ -80,10 +80,10 @@ public:
 	virtual OSStatus GetParameterInfo(  AudioUnitScope			inScope,
 										AudioUnitParameterID	inParameterID,
 										AudioUnitParameterInfo	&outParameterInfo );
-    
+	
 	virtual OSStatus GetPresets(CFArrayRef *outData) const;
 	virtual OSStatus NewFactoryPresetSet (const AUPreset &inNewFactoryPreset);
-    
+	
 protected:
 };
 
@@ -93,13 +93,17 @@ AUDIOCOMPONENT_ENTRY(AUBaseProcessFactory, AutoWah)
 
 enum
 {
-	kAutoWahParam_Speed = 0,
-	kAutoWahParam_Resonance = 1,
+	kAutoWahParam_Speed			= 0,
+	kAutoWahParam_Resonance		= 1,
+	kAutoWahParam_Frequancy		= 2,
+	kAutoWahParam_Range			= 3
 };
 
 
-static CFStringRef kSpeed_Name = CFSTR("Speed");
-static CFStringRef kResonance_Name = CFSTR("Resonance");
+static CFStringRef kSpeed_Name		= CFSTR("Speed");
+static CFStringRef kResonance_Name	= CFSTR("Resonance");
+static CFStringRef kFrequancy_Name	= CFSTR("Frequancy");
+static CFStringRef kRange_Name		= CFSTR("Range");
 
 
 const long kMinSpeed			= 10;
@@ -109,6 +113,14 @@ const long kDefaultSpeed		= 100;
 const long kMinResonance		= 0;
 const long kMaxResonance		= 40;
 const long kDefaultResonance	= 20;
+
+const long kMinFrequancy		= 100;
+const long kMaxFrequancy		= 500;
+const long kDefaultFrequancy	= 200;
+
+const long kMinRange			= 100;
+const long kMaxRange			= 2000;
+const long kDefaultRange		= 1000;
 
 
 // Factory presets

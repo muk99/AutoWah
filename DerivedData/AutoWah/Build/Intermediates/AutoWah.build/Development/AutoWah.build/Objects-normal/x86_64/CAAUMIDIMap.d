@@ -1,3 +1,2 @@
-dependencies: \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CAAUMIDIMap.cpp \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CAAUMIDIMap.h
+dependencies: /Users/muk/SourceTree/AutoWah/PublicUtility/CAAUMIDIMap.cpp \
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CAAUMIDIMap.h

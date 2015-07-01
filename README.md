@@ -19,12 +19,11 @@ Cutoff Frequancyの移動速度
 +	`Resonance` :
 ピークの強度
 
-+	`MinFreq` :
-Cutoff Frequancyの移動範囲の最低値
++	`Frequancy` :
+Cutoff Frequancyの最低値(100~500Hz)
 
-+	`MaxFreq` :
-ピークの強度
-Cutoff Frequancyの移動範囲の最高値
++	`Range` :
+Cutoff Frequancyの移動範囲(100~2000Hz)
 
 
 ## Install

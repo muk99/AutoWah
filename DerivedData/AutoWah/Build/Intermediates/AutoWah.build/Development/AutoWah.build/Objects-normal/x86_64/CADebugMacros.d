@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CADebugMacros.cpp \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CADebugMacros.h
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CADebugMacros.cpp \
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CADebugMacros.h

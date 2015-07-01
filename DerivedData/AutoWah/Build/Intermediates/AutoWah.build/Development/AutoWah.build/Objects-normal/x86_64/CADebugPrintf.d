@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CADebugPrintf.cpp \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CADebugPrintf.h
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CADebugPrintf.cpp \
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CADebugPrintf.h

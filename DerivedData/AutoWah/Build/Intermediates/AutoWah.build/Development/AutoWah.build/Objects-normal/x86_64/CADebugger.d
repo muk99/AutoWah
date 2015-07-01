@@ -1,3 +1,2 @@
-dependencies: \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CADebugger.cpp \
-  /Users/muk/SourceTree/AudioUnits/AutoWah/PublicUtility/CADebugger.h
+dependencies: /Users/muk/SourceTree/AutoWah/PublicUtility/CADebugger.cpp \
+  /Users/muk/SourceTree/AutoWah/PublicUtility/CADebugger.h
