@@ -153,10 +153,14 @@ OSStatus AutoWah::NewFactoryPresetSet(const AUPreset &inNewFactoryPreset)
 				case kPreset_One:
 					SetParameter(kAutoWahParam_Speed, 100);
 					SetParameter(kAutoWahParam_Resonance, 30);
+					SetParameter(kAutoWahParam_Frequancy, 200);
+					SetParameter(kAutoWahParam_Range, 1000);
 					break;
 				case kPreset_Two:
 					SetParameter(kAutoWahParam_Speed, 10);
 					SetParameter(kAutoWahParam_Resonance, 40);
+					SetParameter(kAutoWahParam_Frequancy, 100);
+					SetParameter(kAutoWahParam_Range, 2000);
 					break;
 			}
 			
@@ -243,7 +247,7 @@ void AutoWahKernel::Process( const	Float32		*inSourceP,
 	Float32 *destP = inDestP;
 	int n = inFramesToProcess;
 	
-	double cutoff = 0;
+	double rms = 0.0;
 	float srate = GetSampleRate();
 	double resonance = GetParameter(kAutoWahParam_Resonance);
 	double speed = GetParameter(kAutoWahParam_Speed);
@@ -267,31 +271,32 @@ void AutoWahKernel::Process( const	Float32		*inSourceP,
 		mY2 = mY1;
 		mY1 = output;
 		
-		cutoff += input * input;
+		rms += input * input;
 		*destP++ = output;
 	}
-
+	
 	// calculate RMS and convert cutoff frequancy
-	cutoff = sqrt(cutoff / inFramesToProcess);
-	cutoff = 20 * log(cutoff) + 450;
-	if(cutoff < 0.0) cutoff = 0; // underflow
-	cutoff *= 10;
+	rms = sqrt(rms / inFramesToProcess);
+	if(rms > 0)rms = 20 * log(rms);
+	else rms = -450;
+	
+
+
 	
 	// update cutoff frequancy
-	cutoff = 2.0 * cutoff / srate;
-	if(cutoff > mLastCutoff){
-		mLastCutoff += (2.0 * speed / srate);
-		if(cutoff < mLastCutoff) mLastCutoff = cutoff;
+	if(rms > -60.0){
+#ifdef DEBUG_PATH
+		debug << "rms: " << rms << std::endl;
+#endif
 	}
-	else if(cutoff < mLastCutoff){
-		mLastCutoff -= (2.0 * speed / srate);
-		if(cutoff > mLastCutoff) mLastCutoff = cutoff;
+	else{
+#ifdef DEBUG_PATH
+		debug << "================ : " << rms << std::endl;
+#endif
 	}
 	
 	CalculateLopassParams(mLastCutoff, resonance);
 	
-#ifdef DEBUG_PATH
-	debug << "fre: " << cutoff << "     range: " << mLastCutoff << std::endl;
-#endif
+
 	
 }
