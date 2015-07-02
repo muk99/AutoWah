@@ -30,7 +30,7 @@ public:
 							bool            &ioSilence );
 	
 	void CalculateLopassParams(	double inFreq,
-										double inResonance );
+								double inResonance );
 	
 	virtual void Reset();
 	
