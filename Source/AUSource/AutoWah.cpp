@@ -40,7 +40,7 @@ OSStatus AutoWah::GetParameterInfo(	AudioUnitScope			inScope,
 		{
 			case kAutoWahParam_Speed:
 				AUBase::FillInParameterName (outParameterInfo, kSpeed_Name, false);
-				outParameterInfo.unit = kAudioUnitParameterUnit_Indexed;
+				outParameterInfo.unit = kAudioUnitParameterUnit_Generic;
 				outParameterInfo.minValue = kMinSpeed;
 				outParameterInfo.maxValue = kMaxSpeed;
 				outParameterInfo.defaultValue = kDefaultSpeed;
@@ -205,7 +205,9 @@ void AutoWahKernel::Reset()
 	mY1 = 0.0;
 	mY2 = 0.0;
 	
-	mLastCutoff = 2.0 * 300.0 / GetSampleRate();
+	buf = -100;
+	flag = 0;
+	mLastCutoff = GetParameter(kAutoWahParam_Frequancy);;
 	CalculateLopassParams(mLastCutoff, kDefaultResonance);
 	
 }
@@ -217,6 +219,7 @@ void AutoWahKernel::Reset()
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void AutoWahKernel::CalculateLopassParams(double inFreq, double inResonance)
 {
+	inFreq = 2.0 * inFreq / GetSampleRate();
 	double r = pow(10.0, 0.05 * -inResonance);		// convert from decibels to linear
 	
 	double k = 0.5 * r * sin(M_PI * inFreq);
@@ -250,11 +253,9 @@ void AutoWahKernel::Process( const	Float32		*inSourceP,
 	double rms = 0.0;
 	float srate = GetSampleRate();
 	double resonance = GetParameter(kAutoWahParam_Resonance);
-	double speed = GetParameter(kAutoWahParam_Speed);
 	double freq = GetParameter(kAutoWahParam_Frequancy);
 	double range = GetParameter(kAutoWahParam_Range);
-	
-	
+	double speed = GetParameter(kAutoWahParam_Speed);
 	
 	// debug
 #ifdef DEBUG_PATH
@@ -265,7 +266,6 @@ void AutoWahKernel::Process( const	Float32		*inSourceP,
 	{
 		float input = *sourceP++;
 		float output = mA0*input + mA1*mX1 + mA2*mX2 - mB1*mY1 - mB2*mY2;
-		
 		mX2 = mX1;
 		mX1 = input;
 		mY2 = mY1;
@@ -278,25 +278,32 @@ void AutoWahKernel::Process( const	Float32		*inSourceP,
 	// calculate RMS and convert cutoff frequancy
 	rms = sqrt(rms / inFramesToProcess);
 	if(rms > 0)rms = 20 * log(rms);
-	else rms = -450;
+	else rms = -400;
 	
+	// flag
+	if(rms > -100)
+	{
+		if(rms - buf > 15.0) flag=1;
+	}
+	else flag=0;
 
-
-	
 	// update cutoff frequancy
-	if(rms > -60.0){
-#ifdef DEBUG_PATH
-		debug << "rms: " << rms << std::endl;
-#endif
+	if(flag==1)
+	{
+		mLastCutoff += speed;
+		if(mLastCutoff > freq+range) mLastCutoff = freq+range;
+		
 	}
 	else{
-#ifdef DEBUG_PATH
-		debug << "================ : " << rms << std::endl;
-#endif
+		mLastCutoff -= 2*speed;
+		resonance = 0.0;
+		if(mLastCutoff < freq) mLastCutoff = freq;
 	}
 	
+#ifdef DEBUG_PATH
+	debug  << "flag: " << flag <<  "\tfreq: " << mLastCutoff << std::endl;
+#endif
+	
+	buf = rms;
 	CalculateLopassParams(mLastCutoff, resonance);
-	
-
-	
 }

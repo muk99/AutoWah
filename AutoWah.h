@@ -1,7 +1,6 @@
 
 #ifndef AutoWah_AutoWah_h
 #define AutoWah_AutoWah_h
-
 #endif
 
 #include "AUEffectBase.h"
@@ -10,12 +9,10 @@
 #include <math.h>
 
 //If you want to debug, please enter the path of the debug between ""
-#define DEBUG_PATH "/Users/muk/SourceTree/AudioUnits/AutoWah/debug.txt"
+//#define DEBUG_PATH ""
 
 #ifdef DEBUG_PATH
-#include <iostream>
 #include <fstream>
-#include <string>
 #endif
 
 #pragma mark ____FilterKernel
@@ -52,6 +49,8 @@ private:
 	double	mY2;
 	
 	double	mLastCutoff;
+	double	buf;
+	int		flag;
 };
 
 
@@ -101,8 +100,8 @@ enum
 
 
 static CFStringRef kSpeed_Name		= CFSTR("Speed");
-static CFStringRef kResonance_Name	= CFSTR("Resonance");
-static CFStringRef kFrequancy_Name	= CFSTR("Frequancy");
+static CFStringRef kResonance_Name	= CFSTR("Q");
+static CFStringRef kFrequancy_Name	= CFSTR("Freq");
 static CFStringRef kRange_Name		= CFSTR("Range");
 
 
