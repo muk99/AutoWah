@@ -4,9 +4,9 @@
 
 
 #ifdef DEBUG
-	#define kFilterVersion 0xFFFFFFFF
+	#define kAutoWahVersion 0xFFFFFFFF
 #else
-	#define kFilterVersion 0x00010000	
+	#define kAutoWahVersion 0x00010000	
 #endif
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//

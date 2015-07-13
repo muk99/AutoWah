@@ -15,7 +15,7 @@
 #include <fstream>
 #endif
 
-#pragma mark ____FilterKernel
+#pragma mark ____Kernel
 
 class AutoWahKernel : public AUKernelBase
 {
@@ -54,14 +54,14 @@ private:
 };
 
 
-#pragma mark ____Filter
+#pragma mark ____
 
 class AutoWah : public AUEffectBase
 {
 public:
 	AutoWah(AudioUnit component);
 	
-	virtual OSStatus Version() { return kFilterVersion; }
+	virtual OSStatus Version() { return kAutoWahVersion; }
 	
 	virtual AUKernelBase *NewKernel() { return new AutoWahKernel(this); }
 	
@@ -120,6 +120,7 @@ const long kDefaultFrequancy	= 200;
 const long kMinRange			= 100;
 const long kMaxRange			= 2000;
 const long kDefaultRange		= 1000;
+
 
 
 // Factory presets
