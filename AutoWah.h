@@ -15,7 +15,7 @@
 #include <fstream>
 #endif
 
-#pragma mark ____Kernel
+#pragma mark ____AutoWahKernel
 
 class AutoWahKernel : public AUKernelBase
 {
@@ -54,7 +54,7 @@ private:
 };
 
 
-#pragma mark ____
+#pragma mark ____AutoWah
 
 class AutoWah : public AUEffectBase
 {
