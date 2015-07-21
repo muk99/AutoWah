@@ -152,13 +152,13 @@ OSStatus AutoWah::NewFactoryPresetSet(const AUPreset &inNewFactoryPreset)
 			{
 				case kPreset_One:
 					SetParameter(kAutoWahParam_Speed, 100);
-					SetParameter(kAutoWahParam_Resonance, 30);
+					SetParameter(kAutoWahParam_Resonance, 25);
 					SetParameter(kAutoWahParam_Frequancy, 200);
-					SetParameter(kAutoWahParam_Range, 1000);
+					SetParameter(kAutoWahParam_Range, 2000);
 					break;
 				case kPreset_Two:
 					SetParameter(kAutoWahParam_Speed, 10);
-					SetParameter(kAutoWahParam_Resonance, 40);
+					SetParameter(kAutoWahParam_Resonance, 30);
 					SetParameter(kAutoWahParam_Frequancy, 100);
 					SetParameter(kAutoWahParam_Range, 2000);
 					break;
@@ -281,7 +281,7 @@ void AutoWahKernel::Process( const	Float32		*inSourceP,
 	else rms = -400;
 	
 	// flag
-	if(rms > -100)
+	if(rms > -80)
 	{
 		if(rms - buf > 15.0) flag=1;
 	}
